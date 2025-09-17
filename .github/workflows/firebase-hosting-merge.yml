@@ -10,18 +10,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Setup Node.js
+      # 👇 Ye step zaroori hai
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      # Install dependencies (including devDependencies like Vite)
       - run: npm ci --include=dev
-
-      # Build React app
       - run: npm run build
 
-      # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
