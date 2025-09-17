@@ -1,27 +1,17 @@
-name: Deploy to Firebase Hosting on merge
-on:
-  push:
-    branches:
-      - master
-
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      # Setup Node.js
+      # Node.js setup (20 use karenge, Firebase CLI ke liye required hai)
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
 
-      # Install dependencies (including devDependencies like Vite)
       - run: npm ci --include=dev
-
-      # Build React app
       - run: npm run build
 
-      # Deploy to Firebase Hosting
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
