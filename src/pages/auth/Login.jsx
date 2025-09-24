@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/form";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase/Firebase";
+import { useNavigate } from "react-router-dom";
 
 const loginSchema = z.object({
   email: z.string().email("Enter a valid email"),
@@ -25,6 +26,9 @@ const loginSchema = z.object({
 
 
 export default function Login() {
+
+  const navigate = useNavigate();
+
   const form = useForm({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -55,61 +59,84 @@ export default function Login() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-slate-50">
-      <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
-        <h1 className="text-xl font-semibold text-center mb-6">Login</h1>
+  <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-md">
+    <h1 className="text-xl font-semibold text-center mb-6">Login</h1>
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
-            {/* Email Field */}
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="email"
-                      placeholder="you@example.com"
-                      className="h-11"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        {/* Email Field */}
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Email</FormLabel>
+              <FormControl>
+                <Input
+                  type="email"
+                  placeholder="you@example.com"
+                  className="h-11"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            {/* Password Field */}
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="password"
-                      placeholder="••••••••"
-                      className="h-11"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
+        {/* Password Field */}
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Password</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  placeholder="••••••••"
+                  className="h-11"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              className="w-full h-11 bg-slate-900 text-white hover:bg-slate-800 rounded-lg"
-            >
-              Sign In
-            </Button>
-          </form>
-        </Form>
-      </div>
-    </div>
+        {/* Create Account + Forgot Password */}
+        <div className="flex items-center justify-between -mt-2">
+          {/* Create Account Button */}
+          <Button
+            variant="link"
+            type="button"
+            onClick={() => navigate("/register")}
+            className="text-sm text-slate-600 hover:text-slate-900 font-medium p-0"
+          >
+            Create New Account
+          </Button>
+
+          {/* Forgot Password Button */}
+          <Button
+            variant="link"
+            type="button"
+            onClick={() => navigate("/forgot-password")}
+            className="text-sm text-slate-600 hover:text-slate-900 font-medium p-0"
+          >
+            Forgot Password?
+          </Button>
+        </div>
+
+        {/* Submit Button */}
+        <Button
+          type="submit"
+          className="w-full h-11 bg-slate-900 text-white hover:bg-slate-800 rounded-lg"
+        >
+          Sign In
+        </Button>
+      </form>
+    </Form>
+  </div>
+</div>
   );
 }

@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCD3uBJPx9sXp5COsVJUVJi7u5tInRsl-I",
-  authDomain: "hr-manage-dashboard.firebaseapp.com",
-  projectId: "hr-manage-dashboard",
-  storageBucket: "hr-manage-dashboard.firebasestorage.app",
-  messagingSenderId: "797253157070",
-  appId: "1:797253157070:web:ce9d22e87d125c62b5109f",
-  measurementId: "G-8L7R0FNREQ"
+  apiKey: "AIzaSyCAOES_4nbTy_WODy7hzXRSQ-hdNiDPTHM",
+  authDomain: "hr-manage-dashboard-aa6d1.firebaseapp.com",
+  projectId: "hr-manage-dashboard-aa6d1",
+  storageBucket: "hr-manage-dashboard-aa6d1.firebasestorage.app",
+  messagingSenderId: "542171844721",
+  appId: "1:542171844721:web:5e0ebc716b5a9b7ca60bd0",
+  measurementId: "G-4VQ2WV4VEX"
 };
 
 // Initialize Firebase
