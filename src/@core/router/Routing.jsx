@@ -33,7 +33,7 @@ export const routes = createBrowserRouter([
   { path: "/", element: withSuspense(Home, "privateRoutes") },
   { path: "/login", element: withSuspense(Login, "publicRoutes") },
   { path: "/forgot-password", element: withSuspense(ForgotPass, "publicRoutes") },
-  { path: "/reset-password?oobCode", element: withSuspense(ResetPass, "publicRoutes") },
+  { path: "/reset-password", element: withSuspense(ResetPass, "publicRoutes") },
   { path: "/register", element: withSuspense(Register, "publicRoutes") },
   { path: "/home", element: withSuspense(Home, "privateRoutes") },
 ]);
